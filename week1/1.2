@@ -1,0 +1,14 @@
+a) có 1 thành phần liên thông vì các phần tử đã được ghép vào với nhau
+b) Lần 1: union(0,1): leader[0] = 0, leader[1] = 1, cập nhật leader[0] thành 1 -> 1 lần cập nhật
+   Lần 2: union(0,2): leader[0] = 1, leader[2] = 2, cập nhật leader[0] và leader[1] thành 2 -> 2 lần cập nhật
+   ...
+   lần n-1: union(0,n-1): n-1 lần cập nhật
+   Tổng số lần cập nhật: 1+2+....+(n-1) = n(n-1)/2 ~n^2/2
+c) Thao tác find(0) phải duyệt từ nút 0 đến nút gốc n-1 qua n-1 liên kết -> đòi hỏi độ dài tuyến tính theo n
+-> O(n)
+d) union(0,1) -> cây gốc 0 có kích thước 2
+   union(0,2) -> cây gốc 0 có kích thước 3
+   ...
+   0 luôn là gốc của cây
+   find(0) kết thúc sau một hằng số lần truy cập mảng
+   -> 0(1)

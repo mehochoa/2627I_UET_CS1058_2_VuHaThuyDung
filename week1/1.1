@@ -1,0 +1,16 @@
+testcase mà cài đặt trên chạy sai: cho n = 3
+mảng ban đầu leader = [0, 1, 2]
+khi đó ta phải thực hiện các phép toán union(1,2) và union(1,0)
+    + Khi thực hiện union(1,2): p=1, q=2
+        i=0: leader[0] == leader[1] sai
+        i=1: leader[1] == leader[1] đúng -> gán leader[1] bằng leader[2]
+        i=2: leader[2] == leader[1] sai
+        -> leader = [0,2,2]
+    + Khi thực hiện union(1,0): p=1, q=0
+        i=0: leader[0] == leader[1] sai
+        i=1: leader[1] == leader[1] đúng -> gán leader[1] bằng leader[0]
+        i=2: leader[2] == leader[1] sai
+        -> leader = [0,0,2]
+    + Khi đó find(1)=0 khác find(2)=2 -> testcase chạy sai
+Nguyên nhân: trong vòng lặp for, khi i = p, leader[p] sẽ bị ghi đè thành leader[q]
+             ở các vòng lặp tiếp theo, giá trị của leader[p] bị thay đổi nên so sánh sẽ cho ra kết quả sai lệch
